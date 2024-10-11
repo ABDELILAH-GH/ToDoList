@@ -1,0 +1,73 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: sans-serif;
+}
+.header {
+  background-color: #343a40;
+  color: white;
+  padding: 15px;
+  margin-bottom: 40px;
+}
+.task {
+  margin-inline: auto;
+  width: fit-content;
+}
+.task input {
+  padding: 10px 15px;
+  width: 200px;
+  border-radius: 6px;
+  border: 1px solid #e2e2e2;
+}
+.task input:focus {
+  outline: none;
+}
+.add {
+  padding: 10px;
+  border: none;
+  background: #0077ff;
+  color: white;
+  border-radius: 6px;
+}
+.list {
+  margin-top: 40px;
+  margin-inline: auto;
+  width: fit-content;
+  background: red;
+  color: white;
+  border-radius: 6px;
+  overflow: hidden;
+}
+.todo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 80px;
+  padding: 10px;
+}
+.success {
+  background-color: #5cb85c;
+}
+.warning {
+  background-color: #f0ad4e;
+}
+button {
+  cursor: pointer;
+}
+.todo .manipulate-task button:first-child {
+  padding: 10px;
+  border: none;
+  background: #0077ff;
+  color: white;
+  border-radius: 6px;
+}
+.todo .manipulate-task button:last-child {
+  padding: 10px;
+  border: none;
+  background: #d9534f;
+  color: white;
+  border-radius: 6px;
+}
