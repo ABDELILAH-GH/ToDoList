@@ -77,22 +77,21 @@ $tasks = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <div class="list">
         <?php foreach ($tasks as $tache): ?>
             <!-- show one each of task -->
-            <div class="todo <?php echo $tache['done'] ? 'success' : 'warning'; ?>">
+            <div class="todo  <?php echo $tache['done'] ? 'success line-through' : 'warning'; ?>">
                 <!-- show the title of task -->
                 <span><?php echo htmlspecialchars($tache['title']); ?></span>
                 <div class="manipulate-task"> 
                     <!-- Form to toggle task status (done/undo) -->
                     <form method="POST" action="index.php" style="display:inline;">
-                        <input type="hidden" name="id" value="<?php echo $tache['id']; ?>">
-                        <button type="submit" name="action" value="toggle">
+                        <input type="hidden" name="id" value="<?php echo $tache['id'];?>">
+                        <button type="submit" name="action" value="toggle" class="done">
                             <?php echo $tache['done'] ? 'Undo' : 'Done'; ?>
                         </button>
                     </form>
-
                     <!-- Form to delete task -->
                     <form method="POST" action="index.php" style="display:inline;">
-                        <input type="hidden" name="id" value="<?php echo $tache['id']; ?>">
-                        <button type="submit" name="action" value="delete">X</button>
+                        <input type="hidden" name="id"  class="boot-blue" value="<?php echo $tache['id']; ?>">
+                        <button type="submit" name="action" value="delete" class="delete">X</button>
                     </form>
                 </div>
             </div>
