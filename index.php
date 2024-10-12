@@ -32,6 +32,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         // execute the request
         $stmt->execute(['task' => $task]);
 
+        // Redirection pour éviter la duplication lors de l'actualisation
+        header("Location: index.php");
+        exit();  // Terminer l'exécution après la redirection
+
     // if the action equals delete and not empty, then delete the task
     } elseif ($action === 'delete' && !empty($taskId)) {
         // prepare the request to delete 
@@ -41,6 +45,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         // execute 
         $stmt->execute(['id' => $taskId]);
 
+        // 
+        header("Location: index.php");
+        exit();
+
     // if the action equals toggle and not empty, then toggle the status of the task
     } elseif ($action === 'toggle' && !empty($taskId)) {
         // prepare the request to update 
@@ -49,6 +57,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $stmt = $pdo->prepare($sql);
         // execute 
         $stmt->execute(['id' => $taskId]);
+
+        //
+        header("Location: index.php");
+        exit();
     }
 }
 
@@ -83,14 +95,14 @@ $tasks = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 <div class="manipulate-task"> 
                     <!-- Form to toggle task status (done/undo) -->
                     <form method="POST" action="index.php" style="display:inline;">
-                        <input type="hidden" name="id" value="<?php echo $tache['id'];?>">
+                        <input type="hidden" name="id" value="<?php echo $tache['id']; ?>">
                         <button type="submit" name="action" value="toggle" class="done">
                             <?php echo $tache['done'] ? 'Undo' : 'Done'; ?>
                         </button>
                     </form>
                     <!-- Form to delete task -->
                     <form method="POST" action="index.php" style="display:inline;">
-                        <input type="hidden" name="id"  class="boot-blue" value="<?php echo $tache['id']; ?>">
+                        <input type="hidden" name="id" value="<?php echo $tache['id']; ?>">
                         <button type="submit" name="action" value="delete" class="delete">X</button>
                     </form>
                 </div>
